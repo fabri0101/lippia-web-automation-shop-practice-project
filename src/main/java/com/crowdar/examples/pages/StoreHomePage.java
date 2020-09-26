@@ -22,8 +22,11 @@ public class StoreHomePage extends PageBaseStore {
     private final String EMAIL_INPUT_CREATE_CSS_SELECTOR = "#email_create";
     private final String EMAIL_INPUT_LOGIN_CSS_SELECTOR = "#email";
     private final String FORM_CSS_SELECTOR = "#noSlide > h1";
+    private final String INPUT_SEARCH_ID = "search_query_top";
+    private final String BUTTON_SEARCH_CSS_SELECTOR = "#searchbox > button";
 
     public void go(){
+
         navigateToCompleteURL();
     }
 
@@ -55,10 +58,12 @@ public class StoreHomePage extends PageBaseStore {
     }
 
     public void createAnAccountButton(){
+
         clickElement(By.cssSelector(CREATE_ACCOUNT_BUTTON_CSS_SELECTOR));
     }
 
     public void registerButton(){
+
         clickElement(By.id(REGISTER_BUTTON_ID));
     }
 
@@ -86,10 +91,17 @@ public class StoreHomePage extends PageBaseStore {
         completeField(By.cssSelector(EMAIL_INPUT_LOGIN_CSS_SELECTOR), email);
     }
 
+    public void enterSearch(String search){
+
+        completeField(By.id(INPUT_SEARCH_ID), search);
+        clickElement(By.cssSelector(BUTTON_SEARCH_CSS_SELECTOR));
+    }
+
     public void verifYForm(){
         waitForElementVisibility(By.cssSelector(FORM_CSS_SELECTOR));
         Assert.assertTrue(isElementPresentAndDisplayed(By.cssSelector(FORM_CSS_SELECTOR)), "El Formulario no se ha desplegado");
     }
+
 
 
 }
